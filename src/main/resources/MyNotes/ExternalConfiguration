@@ -1,0 +1,37 @@
+Configuring/Sending values from application.properties -> project variables is called external configuration
+-------------------------------------------------------------------------------------------------------------
+
+create a pojo class - with constructor, getters and setters. Annotate - @ConfigurationProperties("/prefix") and
+@Component - spring will manage its bean. You can also add validation to this class by using spring-boot-starter-validation dependency.
+Use jakarta annotations and mark this class as @Validated
+
+Ex:-
+@ConfigurationProperties(prefix = "mail")
+@Component
+@Validated
+public class MailServiceConfiguration {
+    private String hostName;
+    private int port;
+    @Size(min = 0, max = 20, message = "Exceeding size")
+    @NotEmpty(message = "from address not mentioned")
+    @NotNull(message = "from address cannot be empty")
+    private String from;
+
+    //getters and setters
+
+Application.properties:-
+------------------------
+mail.hostName = host@mail.com
+mail.port = 9000
+mail.from = from@mail.com
+
+//To see if the MailServiceConfiguration is configured from application.properties
+----------------------------------------------------------------------------------
+    @Autowired
+    MailServiceConfiguration mailServiceConfiguration;
+
+    @RequestMapping("/mail")
+    public MailServiceConfiguration getAllCourses(){
+        return mailServiceConfiguration;
+    }
+
