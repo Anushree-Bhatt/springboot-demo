@@ -1,0 +1,10 @@
+#diff env - diff cong -> profiles
+spring.profile.active
+
+#Diff logging levels:-
+Trace
+Debug
+Info
+Warning
+Error
+Off
