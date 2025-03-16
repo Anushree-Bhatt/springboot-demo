@@ -1,0 +1,7 @@
+How do you deploy this springboot application -- (embedded server approach)
+
+-edit configurations - maven - add goals: clean install - apply - ok
+-run it. -> creates learn-spring-boot-0.0.1-SNAPSHOT.jar inside target folder
+-run jar file using the following command:-
+    java -jar learn-spring-boot-0.0.1-SNAPSHOT.jar
+    (You project is running as a web application on localhost:8080)
